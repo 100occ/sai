@@ -1,4 +1,6 @@
 
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -54,6 +56,16 @@ strong {
 }
 </style>
 <script>
+
+
+year = Math.floor(Math.random() * (2020 - 2012) + 2012);
+month = Math.floor(Math.random() * 12) + 1;
+day = Math.floor(Math.random() * 29) + 1 ;
+l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year + "-" + 
+
+month + "-" + day;
+
+
 var getJSON = function(url, callback) {
 
     var xhr = new XMLHttpRequest();
@@ -62,36 +74,20 @@ var getJSON = function(url, callback) {
 
     xhr.onload = function() {
 
-        var status = xhr.status;
-
-        if (status == 200) {
-            callback(null, xhr.response);
-        } else {
-            callback(status);
-        }
+            callback(xhr.response);
     };
 
     xhr.send();
 };
-var text;
-year = Math.floor(Math.random() * (2020 - 2012) + 2012);
-month = Math.floor(Math.random() * 12) + 1;
-day = Math.floor(Math.random() * 29) + 1 ;
-l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year 
 
-+ "-" + month + "-" + day;
-
-getJSON(l, function(err, data) {
-    var text = data;
+getJSON(l, function(data) {
     var myObj, i, j, x = "";
-    myObj = text;
+    myObj = data;
     for (i in myObj.result) {
         x += myObj.result[i].description ;
     }
 
     document.getElementById("main").innerHTML = x;
-
-
 });
 </script>
 </head>
