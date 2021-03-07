@@ -83,8 +83,6 @@ strong {
   }
 }
 </style>
-
-
 <script>
 var getJSON = function(url, callback) {
 
@@ -105,19 +103,13 @@ var getJSON = function(url, callback) {
 
     xhr.send();
 };
-
 var text;
 year = Math.floor(Math.random() * (2020 - 2012) + 2012);
 month = Math.floor(Math.random() * 12) + 1;
 day = Math.floor(Math.random() * 29) + 1 ;
-//console.log(year, month, day);
 l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year + "-" + month + "-" + day;
 getJSON(l, function(err, data) {
-
-
-
     var text = data;
-
     var img, myObj, i, j, x = "";
     myObj = text;
 
@@ -135,29 +127,14 @@ getJSON(l, function(err, data) {
 	console.log(img);
 
 });
-
-
 var myObj, i, j, x = "";
 myObj = text;
-
-
-//for (i in myObj.result) {
-//    x += "<h2>" + myObj.result[i].title + "</h2>";
-//}
 document.getElementById("demo").innerHTML = x;
-document.getElementById("photo").src = img;
 </script>
-
 </head>
 <body>
-
-
-<img src="" style="display: block; margin-left: auto; margin-right: auto;"  id="photo" />
 <div class="center">
   <p id="demo" class="ArticleCopy"></p>
 </div>
-
-
-
 </body>
 </html>
