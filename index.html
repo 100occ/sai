@@ -40,32 +40,13 @@ html{
 .ArticleCopy p {
     text-rendering: optimizeLegibility;
 }
-.ArticleCopy blockquote {
-    border-radius: 3px;
-    position: relative;  
-    font-style: italic;
-    text-align: center;
-    padding: 1rem 1.2rem;
-    width: 80%;  
-    color: #4a4a4a;
-    margin: 1rem auto 2rem;
-    color: #4a4a4a;
-    background: #E8E8E8;
-}
-.ArticleCopy blockquote:before,
-.ArticleCopy blockquote:after{
-    font-family: FontAwesome;
-    position: absolute;
-    top: 13px;
-    color: #E8E8E8;
-    font-size: 34px;
-}
-.ArticleCopy blockquote:before{
+
+.ArticleCopy:before{
     content: "\f10d";
     margin-right: 13px;
     right: 100%;
 }
-.ArticleCopy blockquote:after{
+.ArticleCopy:after{
     content: "\f10e";
     margin-left: 13px;
     left: 100%;  
