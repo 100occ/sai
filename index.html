@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,14 +6,11 @@
   <meta charset="utf-8">
   <title>Yup</title>
 <style>
-.ArticleCopy {
-  quotes: "“" "”" "‘" "’";
-}
-.ArticleCopy::before {
-    content: open-quote;
-}
-.ArticleCopy::after {
-    content: close-quote;
+html{
+  font-size: 16px;
+  line-height: 1.5;
+  background: #f7f3f3;
+
 }
 .center {
   display: flex;
@@ -27,13 +25,8 @@
     direction: ltr;
     box-sizing: border-box;
 }
-html{
-  font-size: 16px;
-  line-height: 1.5;
-  background: #f7f3f3;
 
-}
-.ArticleCopy{
+.quote{
   background: #eeeeee;
   margin: 0;
   position: absolute;
@@ -46,7 +39,7 @@ html{
   border: 1px solid #ddd;
   padding: 3rem;
 }
-.ArticleCopy p {
+.quote p {
     text-rendering: optimizeLegibility;
 }
 strong {
@@ -84,34 +77,27 @@ var text;
 year = Math.floor(Math.random() * (2020 - 2012) + 2012);
 month = Math.floor(Math.random() * 12) + 1;
 day = Math.floor(Math.random() * 29) + 1 ;
-l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year + "-" + month + "-" + day;
+l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year 
+
++ "-" + month + "-" + day;
+
 getJSON(l, function(err, data) {
     var text = data;
-    var img, myObj, i, j, x = "";
+    var myObj, i, j, x = "";
     myObj = text;
-
     for (i in myObj.result) {
-       
         x += myObj.result[i].description ;
-	img += myObj.result[i].thumbnail ;
-        for (j in myObj.result[i].models) {
-            x += myObj.result[i].result[j] + "<br>";
-	
-        }
     }
-    document.getElementById("demo").innerHTML = x;
-    document.getElementById("photo").src = img;
-	console.log(img);
+
+    document.getElementById("main").innerHTML = x;
+
 
 });
-var myObj, i, j, x = "";
-myObj = text;
-document.getElementById("demo").innerHTML = x;
 </script>
 </head>
 <body>
 <div class="center">
-  <p id="demo" class="ArticleCopy"></p>
+  <p id="main" class="quote"></p>
 </div>
 </body>
 </html>
