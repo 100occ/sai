@@ -5,6 +5,15 @@
   <meta charset="utf-8">
   <title>Yup</title>
 <style>
+ArticleCopy {
+  quotes: "“" "”" "‘" "’";
+}
+ArticleCopy::before {
+    content: open-quote;
+}
+ArticleCopy::after {
+    content: close-quote;
+}
 .center {
   display: flex;
   justify-content: center;
