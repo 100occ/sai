@@ -7,8 +7,6 @@
   <title>Yup</title>
 
 <style>
-
-
 .center {
   display: flex;
   justify-content: center;
@@ -16,7 +14,6 @@
   height: 200px;
 
 }
-
 *, *:before, *:after{
     margin: 0;
     padding: 0;
@@ -28,7 +25,6 @@ html{
   line-height: 1.8;
 
 }
-
 .ArticleCopy{
  margin: 0;
   position: absolute;
@@ -57,12 +53,10 @@ html{
     color: #4a4a4a;
     background: #E8E8E8;
 }
-/* -- create the quotation marks -- */
 .ArticleCopy blockquote:before,
 .ArticleCopy blockquote:after{
     font-family: FontAwesome;
     position: absolute;
-    /* -- inside the relative position of blockquote -- */
     top: 13px;
     color: #E8E8E8;
     font-size: 34px;
@@ -79,12 +73,9 @@ html{
     top: auto;
     bottom: 13px;
 }
-
 strong {
 	display: none;
 }
-
-
 @media only screen and (max-width: 600px) {
   .ArticleCopy {
     border: none;
@@ -92,9 +83,6 @@ strong {
     width: 85%;
   }
 }
-
-
-
 </style>
 
 
@@ -131,17 +119,20 @@ getJSON(l, function(err, data) {
 
     var text = data;
 
-    var myObj, i, j, x = "";
+    var img, myObj, i, j, x = "";
     myObj = text;
 
     for (i in myObj.result) {
        
         x += myObj.result[i].description ;
+	img += myObj.result[i].thumbnail ;
         for (j in myObj.result[i].models) {
             x += myObj.result[i].result[j] + "<br>";
+	
         }
     }
     document.getElementById("demo").innerHTML = x;
+    document.getElementById("photo").innerHTML = img;
 
 });
 
@@ -154,13 +145,14 @@ myObj = text;
 //    x += "<h2>" + myObj.result[i].title + "</h2>";
 //}
 document.getElementById("demo").innerHTML = x;
+document.getElementById("photo").innerHTML = img;
 </script>
 
 </head>
 <body>
 
 
-
+<img src="" style="display: block; margin-left: auto; margin-right: auto;"  id="photo" />
 <div class="center">
   <p id="demo" class="ArticleCopy"></p>
 </div>
