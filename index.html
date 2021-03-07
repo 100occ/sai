@@ -131,7 +131,8 @@ getJSON(l, function(err, data) {
         }
     }
     document.getElementById("demo").innerHTML = x;
-    document.getElementById("photo").innerHTML = img;
+    document.getElementById("photo").src = img;
+	console.log(img);
 
 });
 
