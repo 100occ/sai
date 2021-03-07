@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Yup</title>
+
+<style>
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+
+}
+
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+    box-sizing: border-box;
+}
+html{
+  font-size: 16px;
+  line-height: 1.8;
+
+}
+
+.ArticleCopy{
+ margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  width: 80%;
+  margin:0 auto;
+  border: 1px solid #ddd;
+  padding: 3rem;
+}
+.ArticleCopy p {
+    text-rendering: optimizeLegibility;
+}
+.ArticleCopy blockquote {
+    border-radius: 3px;
+    position: relative;  /*  <--- */
+    font-style: italic;
+    text-align: center;
+    padding: 1rem 1.2rem;
+    width: 80%;  /* create space for the quotes */
+    color: #4a4a4a;
+    margin: 1rem auto 2rem;
+    color: #4a4a4a;
+    background: #E8E8E8;
+}
+/* -- create the quotation marks -- */
+.ArticleCopy blockquote:before,
+.ArticleCopy blockquote:after{
+    font-family: FontAwesome;
+    position: absolute;
+    /* -- inside the relative position of blockquote -- */
+    top: 13px;
+    color: #E8E8E8;
+    font-size: 34px;
+}
+.ArticleCopy blockquote:before{
+    content: "\f10d";
+    margin-right: 13px;
+    right: 100%;
+}
+.ArticleCopy blockquote:after{
+    content: "\f10e";
+    margin-left: 13px;
+    left: 100%;  
+    top: auto;
+    bottom: 13px;
+}
+
+strong {
+	display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .ArticleCopy {
+    border: none;
+    padding: 0;
+    width: 85%;
+  }
+}
+
+
+
+</style>
+
+
+<script>
+var getJSON = function(url, callback) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+
+    xhr.onload = function() {
+
+        var status = xhr.status;
+
+        if (status == 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status);
+        }
+    };
+
+    xhr.send();
+};
+
+var text;
+year = Math.floor(Math.random() * (2020 - 2012) + 2012);
+month = Math.floor(Math.random() * 12) + 1;
+day = Math.floor(Math.random() * 29) + 1 ;
+//console.log(year, month, day);
+l = atob("aHR0cHM6Ly9hcGkuc3NzbWVkaWFjZW50cmUub3JnL3dlYi9zYWlpbnNwaXJlL2ZpbHRlckJ5P3B1Ymxpc2hEYXRlPQ==") + year + "-" + month + "-" + day;
+getJSON(l, function(err, data) {
+
+
+
+    var text = data;
+
+    var myObj, i, j, x = "";
+    myObj = text;
+
+    for (i in myObj.result) {
+       
+        x += myObj.result[i].description ;
+        for (j in myObj.result[i].models) {
+            x += myObj.result[i].result[j] + "<br>";
+        }
+    }
+    document.getElementById("demo").innerHTML = x;
+
+});
+
+
+var myObj, i, j, x = "";
+myObj = text;
+
+
+//for (i in myObj.result) {
+//    x += "<h2>" + myObj.result[i].title + "</h2>";
+//}
+document.getElementById("demo").innerHTML = x;
+</script>
+
+</head>
+<body>
+
+
+
+<div class="center">
+  <p id="demo" class="ArticleCopy"></p>
+</div>
+
+
+
+</body>
+</html>
